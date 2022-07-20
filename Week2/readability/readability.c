@@ -34,7 +34,7 @@ int count_sentences(char* text, int len){
         }
     }
     return num_sentences;
-}asdf
+}
 
 int main() 
 {
