@@ -2,9 +2,8 @@
 
 int num_digits(long n){
     int digits = 0;
-    long tmp = n;
-    while (tmp != 0){
-        tmp /= 10;
+    while (n != 0){
+        n = n / 10;
         digits++;
     }
     return digits;
@@ -19,9 +18,15 @@ int get_digit(long n, int pos){
 
 int check_valid(long n, int d){
     int digit_sum = 0;
-    for (int i = 1; i <= d; i+= 2){
+    for (int i = 1; i <= d; i += 2){
         int dd = get_digit(n, i) * 2;
-        digit_sum += (dd / 10) + (dd % 10);
+
+        int first_digit = dd / 10;
+        int second_digit = dd % 10;
+        digit_sum += first_digit + second_digit;
+        // digit_sum = digit_sum + (first_digit + second_digit);
+
+        // digit_sum += (dd / 10) + (dd % 10);
     }
     for (int i = 0; i <= d; i += 2){
         digit_sum += get_digit(n, i);
@@ -29,7 +34,7 @@ int check_valid(long n, int d){
     return (digit_sum % 10 == 0);
 }
 
-int main(void) 
+int main() 
 {
     long n;
     printf("Credit Card Number: ");
@@ -43,7 +48,7 @@ int main(void)
         printf("INVALID\n");
     }
     
-    else if (d == 15 && get_digit(n, 14) == 3 & (
+    else if (d == 15 && get_digit(n++, 14) == 3 && (
             get_digit(n, 13) == 4 ||
             get_digit(n, 13) == 7            
         )){

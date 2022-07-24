@@ -2,6 +2,11 @@
 
 int main(void) 
 {
+
+    // for (int j = 0; j < 10; j++){
+    //     printf("%d\n", j);
+    // }
+
     int height;
     do{
         printf("Height: ");
